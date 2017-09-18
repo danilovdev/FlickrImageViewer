@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Images Table View Controller-->
+        <!--Flickr Images-->
         <scene sceneID="nAo-oi-10i">
             <objects>
                 <tableViewController id="3wf-it-dEH" customClass="ImagesTableViewController" customModule="FlickrImageViewer" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,31 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" textLabel="rOW-0u-B6o" style="IBUITableViewCellStyleDefault" id="jS1-Tp-QSb">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jS1-Tp-QSb" id="4BA-py-A0K">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rOW-0u-B6o">
-                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="3wf-it-dEH" id="JEf-Zn-hMo"/>
                             <outlet property="delegate" destination="3wf-it-dEH" id="pGc-TI-0YY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9q3-71-xYl"/>
+                    <navigationItem key="navigationItem" title="Flickr Images" id="9q3-71-xYl"/>
                     <connections>
                         <segue destination="UrS-UM-UW6" kind="show" identifier="ShowImageDetails" id="Hb1-ph-WoG"/>
                     </connections>
@@ -50,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="695" y="60"/>
         </scene>
-        <!--Image Details View Controller-->
+        <!--Image Details-->
         <scene sceneID="B5a-dx-Lh0">
             <objects>
                 <viewController id="UrS-UM-UW6" customClass="ImageDetailsViewController" customModule="FlickrImageViewer" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,6 +41,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="dJy-2O-gfV"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Image Details" id="40V-XC-jUe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JaZ-iB-yhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

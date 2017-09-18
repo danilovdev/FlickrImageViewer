@@ -10,10 +10,12 @@ import UIKit
 
 class ImagesTableViewController: UITableViewController {
     
-    var images = [String]()
+    var images = [ImageEntity]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UINib(nibName: "ImageTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageTableViewCell")
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
@@ -41,9 +43,14 @@ class ImagesTableViewController: UITableViewController {
                     }
                     
                     for item in itemsJsonArray {
-                        let itemDictionary = item as Dictionary<String, AnyObject>
-                        let title = itemDictionary["title"] as! String
-                        self.images.append(title)
+                        let mediaDict = item["media"] as! Dictionary<String, AnyObject>
+                        let imageURLStr = mediaDict["m"] as! String
+                        let title = item["title"] as! String
+                        let imageEntity = ImageEntity()
+                        imageEntity.title = title
+                        imageEntity.imageURLStr = imageURLStr
+                        
+                        self.images.append(imageEntity)
                     }
                     
 //                    print(itemsJsonArray)
@@ -72,8 +79,8 @@ class ImagesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath)
-        cell.textLabel?.text = self.images[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as! ImageTableViewCell
+        cell.flickrImageTitle.text = self.images[indexPath.row].title
         return cell
     }
     

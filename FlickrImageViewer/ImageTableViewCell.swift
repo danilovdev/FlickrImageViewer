@@ -10,6 +10,11 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var flickrImageView: UIImageView!
+    
+    @IBOutlet weak var flickrImageTitle: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
