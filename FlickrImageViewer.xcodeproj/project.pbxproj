@@ -12,6 +12,8 @@
 		3CD830261F6EBE3800143863 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD830241F6EBE3800143863 /* ImageTableViewCell.swift */; };
 		3CD830271F6EBE3800143863 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CD830251F6EBE3800143863 /* ImageTableViewCell.xib */; };
 		3CD830291F6EBEE500143863 /* ImageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD830281F6EBEE500143863 /* ImageDetailsViewController.swift */; };
+		3CE43C841F70A537001D9615 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE43C831F70A537001D9615 /* GlobalConstants.swift */; };
+		3CE43C861F70A605001D9615 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE43C851F70A605001D9615 /* UIColorExtensions.swift */; };
 		3CF38F1C1F6D2F60007E0FB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF38F1B1F6D2F60007E0FB3 /* AppDelegate.swift */; };
 		3CF38F211F6D2F60007E0FB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF38F1F1F6D2F60007E0FB3 /* Main.storyboard */; };
 		3CF38F241F6D2F60007E0FB3 /* FlickrImageViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CF38F221F6D2F60007E0FB3 /* FlickrImageViewer.xcdatamodeld */; };
@@ -44,6 +46,8 @@
 		3CD830241F6EBE3800143863 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		3CD830251F6EBE3800143863 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
 		3CD830281F6EBEE500143863 /* ImageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsViewController.swift; sourceTree = "<group>"; };
+		3CE43C831F70A537001D9615 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		3CE43C851F70A605001D9615 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		3CF38F181F6D2F5F007E0FB3 /* FlickrImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF38F1B1F6D2F60007E0FB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CF38F201F6D2F60007E0FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				3CD830241F6EBE3800143863 /* ImageTableViewCell.swift */,
 				3CD830251F6EBE3800143863 /* ImageTableViewCell.xib */,
 				3CD830281F6EBEE500143863 /* ImageDetailsViewController.swift */,
+				3CE43C831F70A537001D9615 /* GlobalConstants.swift */,
+				3CE43C851F70A605001D9615 /* UIColorExtensions.swift */,
 			);
 			path = FlickrImageViewer;
 			sourceTree = "<group>";
@@ -279,8 +285,10 @@
 				3CD830231F6EBDC900143863 /* ImageEntity.swift in Sources */,
 				3C6A8EF21F6E71AD00B408AB /* ImagesTableViewController.swift in Sources */,
 				3CD830261F6EBE3800143863 /* ImageTableViewCell.swift in Sources */,
+				3CE43C841F70A537001D9615 /* GlobalConstants.swift in Sources */,
 				3CF38F241F6D2F60007E0FB3 /* FlickrImageViewer.xcdatamodeld in Sources */,
 				3CF38F1C1F6D2F60007E0FB3 /* AppDelegate.swift in Sources */,
+				3CE43C861F70A605001D9615 /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

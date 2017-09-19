@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let navigationAppearance = UINavigationBar.appearance()
-        navigationAppearance.barTintColor = UIColor.blue
+        navigationAppearance.barTintColor = GlobalConstants.Color.primaryColor
         navigationAppearance.tintColor = UIColor.white
         navigationAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
