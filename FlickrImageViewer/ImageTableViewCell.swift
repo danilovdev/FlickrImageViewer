@@ -14,16 +14,21 @@ class ImageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var flickrImageTitle: UILabel!
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func configure(imageEntity: ImageEntity) {
+        self.flickrImageTitle.text = imageEntity.title
+        if let url = URL(string: imageEntity.imageUrlStr) {
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                
+                OperationQueue.main.addOperation {
+                    if let data = data {
+                        if let downloadedImage = UIImage(data: data) {
+                            self.flickrImageView.image = downloadedImage
+                        }
+                    }
+                }
+            }).resume()
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
 }

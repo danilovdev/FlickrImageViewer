@@ -15,10 +15,38 @@ class ImagesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(UINib(nibName: "ImageTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageTableViewCell")
+        self.configureTableView()
+        self.configureNavBar()
+        self.loadData()
         
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.images.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as! ImageTableViewCell
+        cell.configure(imageEntity: self.images[indexPath.row])
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ShowImageDetails", sender: self)
+    }
+    
+    func configureTableView() {
+        self.tableView.register(UINib(nibName: "ImageTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageTableViewCell")
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 100
+    }
+    
+    func loadData() {
+        self.images.removeAll()
         
         let flickrURLStr = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&tagmode=any&nojsoncallback=1"
         
@@ -48,44 +76,40 @@ class ImagesTableViewController: UITableViewController {
                         let title = item["title"] as! String
                         let imageEntity = ImageEntity()
                         imageEntity.title = title
-                        imageEntity.imageURLStr = imageURLStr
+                        imageEntity.imageUrlStr = imageURLStr
                         
                         self.images.append(imageEntity)
                     }
                     
-//                    print(itemsJsonArray)
-                    DispatchQueue.main.async {
-//                        completion(.Success(itemsJsonArray))
+                    OperationQueue.main.addOperation {
                         self.tableView.reloadData()
                     }
-                    
                     
                 }
                 
             } catch let error {
                 return print(error.localizedDescription)
             }
-
             
-        }.resume()
+            
+            }.resume()
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func configureNavBar() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        
+        let refreshButton = UIButton(type: .system)
+        refreshButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let refreshImage = UIImage(named: "ic_refresh_white_48pt")
+        refreshButton.setImage(refreshImage, for: .normal)
+        refreshButton.addTarget(self, action: #selector(refreshButtonTapped), for: .touchUpInside)
+        let refreshBarButton = UIBarButtonItem(customView: refreshButton)
+        self.navigationItem.setRightBarButtonItems([refreshBarButton], animated: false)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.images.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as! ImageTableViewCell
-        cell.flickrImageTitle.text = self.images[indexPath.row].title
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ShowImageDetails", sender: self)
+    @objc func refreshButtonTapped() {
+        self.loadData()
     }
 
 }

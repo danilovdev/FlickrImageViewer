@@ -12,6 +12,6 @@ class ImageEntity {
     
     var title: String!
     
-    var imageURLStr: String!
+    var imageUrlStr: String!
     
 }
